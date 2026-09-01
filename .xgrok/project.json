@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "setup": "template",
+  "templateId": "javascript-node",
+  "language": "JavaScript",
+  "createdAt": "2026-08-31T23:53:49.551Z",
+  "tool": "xgrok"
+}
