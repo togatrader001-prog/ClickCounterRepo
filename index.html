@@ -1,40 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Gang Learns APIs (Practice Site)</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header class="hero">
+    <p class="badge">⚠️ PRACTICE SITE · NOT A STARTUP · DO NOT INVEST</p>
+    <h1>Why I'm Learning To Code</h1>
+    <p class="tagline">
+      For fast cars, smelly japanese girls, and make money. many many money.
+    </p>
+    <p class="subtag">
+      This whole page is a dumb lab so I can smash buttons, call APIs, read JSON,
+      and pretend I know what I'm doing.
+    </p>
 
+    <div class="gallery">
+      <img class="image-left" src="https://images.barrons.com/im-54002859?width=940&size=1.7777777777777777" alt="fast car energy">
+      <img class="image-right" src="images/money.jpg" alt="many money">
+      <img class="image-bottomright" src="images/sailormoon.jpg" alt="anime reasons">
+    </div>
+  </header>
 
+  <main class="lab">
+    <section class="intro-card">
+      <h2>🧪 API Practice Lab</h2>
+      <p>
+        Each box below hits a <strong>real public API</strong>. No backend. No secrets.
+        Click stuff. Break stuff. Read the Network tab like a gremlin with a degree.
+      </p>
+      <ul class="learn-list">
+        <li>GET requests with <code>fetch()</code></li>
+        <li>Query params vs path params</li>
+        <li>JSON parsing + showing images/text</li>
+        <li>Loading states + error handling</li>
+        <li>Stuff you can later automate like
+          <a href="https://automationexercise.com/api_list" target="_blank" rel="noopener">automationexercise.com</a>
+        </li>
+      </ul>
+    </section>
 
+    <!-- 1. Dumb counter (no API, just JS state) -->
+    <section class="api-card" data-lesson="state">
+      <div class="card-head">
+        <h3>1. The Scheme Counter</h3>
+        <span class="tag">No API · local state</span>
+      </div>
+      <p class="card-desc">
+        Baseline brain training. Click = number goes up. This is how every "engagement metric" is born.
+      </p>
+      <div id="counter" class="big-number">0</div>
+      <button id="counterbutton" class="actionbutton" type="button">Smelly Japanese Girls (click me)</button>
+      <p id="counter-status" class="status">Schemes launched: zero. Pathetic.</p>
+    </section>
 
-<!-- My reasons -->
+    <!-- 2. Crypto price - Coinbase public API, no key -->
+    <section class="api-card" data-lesson="get-json">
+      <div class="card-head">
+        <h3>2. Get Rich Quick (Bitcoin)</h3>
+        <span class="tag">GET · JSON · no API key</span>
+      </div>
+      <p class="card-desc">
+        Hits Coinbase's public spot price. Learn: simple GET, nested JSON (<code>data.amount</code>).
+      </p>
+      <p class="endpoint"><code>GET https://api.coinbase.com/v2/prices/BTC-USD/spot</code></p>
+      <button id="btn-btc" class="actionbutton" type="button">Tell me I'm rich</button>
+      <div id="btc-display" class="result">Price unknown. Probably still poor.</div>
+    </section>
 
-<section class= "info-section">
-    <h2>I want to learn coding because...</h2>
-    <p>For fast cars, smelly japanese girls, and make money. many many money.</p>
+    <!-- 3. Open Library -->
+    <section class="api-card" data-lesson="query-params">
+      <div class="card-head">
+        <h3>3. Fake Intellectual (Open Library)</h3>
+        <span class="tag">GET · query params · arrays</span>
+      </div>
+      <p class="card-desc">
+        Search books so it looks like you read. Learn: query strings, arrays in JSON, optional fields.
+      </p>
+      <p class="endpoint"><code>GET https://openlibrary.org/search.json?q=...</code></p>
+      <div class="row">
+        <input id="book-query" type="text" value="it's always sunny" placeholder="search a book title" />
+        <button id="btn-book" class="actionbutton" type="button">Find "research"</button>
+      </div>
+      <div id="book-display" class="result">Type nonsense. Get literature. Same difference.</div>
+    </section>
 
-    <!-- Image Gallery   -->
-<div class="gallery">
+    <!-- 4. Nekos.best -->
+    <section class="api-card" data-lesson="image-url">
+      <div class="card-head">
+        <h3>4. Unhinged Anime Button (nekos.best)</h3>
+        <span class="tag">GET · image URL from JSON</span>
+      </div>
+      <p class="card-desc">
+        Random wholesome-ish anime image. Learn: API returns a URL, you stick it in an <code>&lt;img&gt;</code>.
+      </p>
+      <p class="endpoint"><code>GET https://nekos.best/api/v2/neko</code></p>
+      <button id="btn-neko" class="actionbutton" type="button">Smelly Japanese Girls Incoming</button>
+      <div id="neko-display" class="result">
+        <p>No neko yet. The lab is incomplete.</p>
+      </div>
+    </section>
 
-    <img class="image-left" src = "https://images.barrons.com/im-54002859?width=940&size=1.7777777777777777">
-    <img class="image-right" src = "images/money.jpg">
-    <img class="image-bottomright" src = "images/sailormoon.jpg">
-</div>
+    <!-- 5. Official Joke API -->
+    <section class="api-card" data-lesson="two-fields">
+      <div class="card-head">
+        <h3>5. Gas Station Comedy (Joke API)</h3>
+        <span class="tag">GET · setup/punchline</span>
+      </div>
+      <p class="card-desc">
+        Random joke. Learn: multiple fields from one response, tiny delay for "comedic timing" if you want.
+      </p>
+      <p class="endpoint"><code>GET https://official-joke-api.appspot.com/random_joke</code></p>
+      <button id="btn-joke" class="actionbutton" type="button">Tell me something stupid</button>
+      <div id="joke-display" class="result">Waiting for a joke worse than this website.</div>
+    </section>
 
+    <!-- 6. Dog CEO -->
+    <section class="api-card" data-lesson="random-image">
+      <div class="card-head">
+        <h3>6. Emotional Support Dog</h3>
+        <span class="tag">GET · random image</span>
+      </div>
+      <p class="card-desc">
+        Random doggos Learn: another image URL pattern + error text.
+      </p>
+      <p class="endpoint"><code>GET https://dog.ceo/api/breeds/image/random</code></p>
+      <button id="btn-dog" class="actionbutton" type="button">Release the hounds</button>
+      <div id="dog-display" class="result">
+        <p>No dog. Only pain.</p>
+      </div>
+    </section>
 
+    <!-- 7. Advice Slip -->
+    <section class="api-card" data-lesson="nested-json">
+      <div class="card-head">
+        <h3>7. Terrible Life Advice</h3>
+        <span class="tag">GET · nested object</span>
+      </div>
+      <p class="card-desc">
+        Random advice from the void. Learn: nested JSON like <code>slip.advice</code>.
+      </p>
+      <p class="endpoint"><code>GET https://api.adviceslip.com/advice</code></p>
+      <button id="btn-advice" class="actionbutton" type="button">Advise me, coward</button>
+      <div id="advice-display" class="result">Advice loading zone empty.</div>
+    </section>
 
+    <!-- 8. Agify -->
+    <section class="api-card" data-lesson="user-input">
+      <div class="card-head">
+        <h3>8. How Old Does The Internet Think You Are</h3>
+        <span class="tag">GET · user input → query</span>
+      </div>
+      <p class="card-desc">
+        Type a name, get a guessed age. Learn: taking input from a form and putting it in the URL safely.
+      </p>
+      <p class="endpoint"><code>GET https://api.agify.io?name=...</code></p>
+      <div class="row">
+        <input id="age-name" type="text" value="Dennis" placeholder="enter a name" />
+        <button id="btn-age" class="actionbutton" type="button">Guess my decay</button>
+      </div>
+      <div id="age-display" class="result">Name in. Age out. Science.</div>
+    </section>
 
-</section>
+    <!-- 9. PokéAPI -->
+    <section class="api-card" data-lesson="path-params">
+      <div class="card-head">
+        <h3>9. Pokémon For No Reason</h3>
+        <span class="tag">GET · path params · bigger JSON</span>
+      </div>
+      <p class="card-desc">
+        Look up a Pokémon. Learn: path parameters (<code>/pokemon/name</code>), sprites, types array.
+      </p>
+      <p class="endpoint"><code>GET https://pokeapi.co/api/v2/pokemon/&#123;name&#125;</code></p>
+      <div class="row">
+        <input id="poke-name" type="text" value="ditto" placeholder="e.g. pikachu" />
+        <button id="btn-poke" class="actionbutton" type="button">I choose you</button>
+      </div>
+      <div id="poke-display" class="result">Gotta fetch 'em all.</div>
+    </section>
 
-<div id="counter">0</div>
-<div id="stock-display" style="font-weight: bold; margin: 15px 0;">Stock: Click button to fetch price</div>
-<button id="counterbutton" class="actionbutton">Smelly Japanese Girls</button>
+    <!-- 10. Cat fact -->
+    <section class="api-card" data-lesson="plain-text-json">
+      <div class="card-head">
+        <h3>10. Cat Fact Dump</h3>
+        <span class="tag">GET · one string field</span>
+      </div>
+      <p class="card-desc">
+        One fact. One string. Perfect "hello world" of APIs when your brain is soup.
+      </p>
+      <p class="endpoint"><code>GET https://catfact.ninja/fact</code></p>
+      <button id="btn-cat" class="actionbutton" type="button">Fact me up</button>
+      <div id="cat-display" class="result">Cats pending.</div>
+    </section>
 
-<script src="script.js"></script>
+    <section class="intro-card footer-card">
+      <h2>What you just practiced</h2>
+      <ol>
+        <li><strong>fetch + JSON</strong> — every card</li>
+        <li><strong>Query params</strong> — books, agify</li>
+        <li><strong>Path params</strong> — Pokémon</li>
+        <li><strong>Images from URLs</strong> — neko, dog, poke sprite</li>
+        <li><strong>User input</strong> — books, age, poke</li>
+        <li><strong>Errors / empty data</strong> — try a fake Pokémon name</li>
+      </ol>
+      <p>
+        Possibly next
+        <a href="https://automationexercise.com/api_list" target="_blank" rel="noopener">Automation Exercise</a>
+        (POST/PUT/DELETE, auth-ish flows) using a tool like Postman or a tiny test script.
+      </p>
+      <p class="fineprint">
+        APIs used are public demo endpoints. no more API keys in frontend for this guy)
+      </p>
+    </section>
+  </main>
 
+  <script src="script.js"></script>
 </body>
 </html>
